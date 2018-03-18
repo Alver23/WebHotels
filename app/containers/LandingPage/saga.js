@@ -1,10 +1,10 @@
 // Dependencies
 import { takeLatest } from 'redux-saga/effects';
 
-// App Saga
+// Global Saga
 import { getHotels } from 'containers/App/saga';
 
-// Constants
+// Global Constants
 import {
   GET_HOTELS,
 } from 'containers/App/constants';

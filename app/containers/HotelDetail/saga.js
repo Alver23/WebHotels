@@ -5,6 +5,9 @@ import {
   takeLatest,
 } from 'redux-saga/effects';
 
+// Global Traductions
+import messages from 'containers/App/messages';
+
 // Utils
 import request from 'utils/request';
 
@@ -15,7 +18,6 @@ import {
 
 // Redux actions
 import * as ActionCreators from './actions';
-
 
 export function* getHotelById(params) {
   if (params && params.id) {
@@ -30,10 +32,10 @@ export function* getHotelById(params) {
       const response = yield call(request, requestURL, options);
       yield put(ActionCreators.getHotelSuccess(response));
     } catch (err) {
-      yield put(ActionCreators.getHotelError('Error al cargar el detalle del hotel'));
+      yield put(ActionCreators.getHotelError(messages.itemGetError));
     }
   } else {
-    yield put(ActionCreators.getHotelError('Error al cargar el detalle del hotel'));
+    yield put(ActionCreators.getHotelError(messages.itemGetError));
   }
 }
 

@@ -8,7 +8,6 @@ import {
   GET_HOTEL_SUCCESS,
 } from './constants';
 
-
 const initialState = fromJS({
   hotel: false,
   loading: false,

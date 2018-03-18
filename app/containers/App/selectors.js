@@ -1,6 +1,4 @@
-/**
- * The global state selectors
- */
+// Dependencies
 
 import { createSelector } from 'reselect';
 
@@ -30,8 +28,8 @@ const makeSelectLocation = () => createSelector(
 
 export {
   selectGlobal,
-  makeSelectLoading,
   makeSelectError,
-  makeSelectLocation,
   makeSelectHotels,
+  makeSelectLoading,
+  makeSelectLocation,
 };

@@ -3,16 +3,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+
 import {
   compose,
   bindActionCreators,
 } from 'redux';
+
 import {
   Row,
   Col,
   Container,
 } from 'reactstrap';
-
 
 // Components
 import Layout from 'components/Layout';
@@ -23,18 +24,23 @@ import LoadingIndicator from 'components/LoadingIndicator';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 
-// Redux actions
-import * as ActionCreators from './actions';
-
 // Selectors
 import {
   makeSelectHotelDetail,
   makeSelectLoading,
 } from './selectors';
 
+// Redux actions
+import * as ActionCreators from './actions';
+
 // Redux reducers
 import reducer from './reducer';
+
+// Saga
 import saga from './saga';
+
+// Traduction
+import messages from './messages';
 
 class HotelDetail extends React.Component {
 
@@ -73,8 +79,8 @@ class HotelDetail extends React.Component {
 
     return (
       <Layout
-        title={'Almundo Page'}
-        description={'Description de la pagina almundo'}
+        title={messages.title}
+        description={messages.description}
       >
         <Container>
           <Row>

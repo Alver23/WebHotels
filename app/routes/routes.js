@@ -1,7 +1,7 @@
 // Containers
 import LandingPage from 'containers/LandingPage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import HotelDetail from 'containers/HotelDetail/Loadable';
+import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 /**
  * Object with all routes defined here

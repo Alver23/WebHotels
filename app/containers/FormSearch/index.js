@@ -3,9 +3,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import { connect } from 'react-redux';
-import { compose, bindActionCreators } from 'redux';
 import { reduxForm } from 'redux-form/immutable';
 import { createStructuredSelector } from 'reselect';
+
+import {
+  intlShape,
+  injectIntl,
+} from 'react-intl';
+
+import {
+  compose,
+  bindActionCreators,
+} from 'redux';
+
 import {
   Form,
   Input,
@@ -21,19 +31,23 @@ import LoadingIndicator from 'components/LoadingIndicator';
 // Utils
 import injectSaga from 'utils/injectSaga';
 
-// Redux actions
-import * as ActionCreators from 'containers/App/actions';
-
 // Selectors
 import { makeSelectLoading } from 'containers/App/selectors';
 
-// saga
+// Redux actions
+import * as ActionCreators from 'containers/App/actions';
+
+// Saga
 import saga from './saga';
+
+// Traductions
+import messages from './messages';
 
 
 class FormSearch extends React.Component {
 
   static propTypes = {
+    intl: intlShape.isRequired,
     handleSubmit: PropTypes.func,
     loading: PropTypes.bool,
     actions: PropTypes.shape({
@@ -59,7 +73,13 @@ class FormSearch extends React.Component {
   }
 
   render() {
-    const { handleSubmit, loading } = this.props;
+    const {
+      loading,
+      handleSubmit,
+      intl: {
+        formatMessage,
+      },
+    } = this.props;
     return (
       <div>
         <Form onSubmit={handleSubmit(this.handleSearch)}>
@@ -67,10 +87,12 @@ class FormSearch extends React.Component {
             name="name"
             component={this.renderInputGroup}
             type="text"
-            label="Ingrese el nombre del hotel"
+            label={formatMessage(messages.formInputNamePlaceholder)}
           >
             <InputGroupAddon addonType="append">
-              <Button type="submit" color="primary">Buscar</Button>
+              <Button type="submit" color="primary">
+                {formatMessage(messages.formButtonSearch)}
+              </Button>
             </InputGroupAddon>
           </Field>
         </Form>
@@ -94,7 +116,7 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 const FormComponent = reduxForm({
   form: 'formSearchHotel',
-})(FormSearch);
+})(injectIntl(FormSearch));
 
 
 export default compose(

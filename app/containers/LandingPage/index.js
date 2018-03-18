@@ -19,14 +19,17 @@ import LoadingIndicator from 'components/LoadingIndicator';
 // Utils
 import injectSaga from 'utils/injectSaga';
 
-// Redux actions
-import * as ActionCreators from 'containers/App/actions';
-
-// Selectors
+// Global Selectors
 import { makeSelectHotels, makeSelectLoading } from 'containers/App/selectors';
+
+// Global Redux actions
+import * as ActionCreators from 'containers/App/actions';
 
 // saga
 import saga from './saga';
+
+// Traductions
+import messages from './messages';
 
 class LandingPage extends React.Component {
 
@@ -60,8 +63,8 @@ class LandingPage extends React.Component {
     return (
       <Layout
         sideBar={<FormSearch />}
-        title={'Almundo Page'}
-        description={'Description de la pagina almundo'}
+        title={messages.title}
+        description={messages.description}
       >
         <HotelLists data={hotels} />
       </Layout>

@@ -15,6 +15,6 @@ const makeSelectLoading = () => createSelector(
 
 export {
   makeSelectLoading,
-  selectHotelDetailPage,
   makeSelectHotelDetail,
+  selectHotelDetailPage,
 };
