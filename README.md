@@ -1,8 +1,21 @@
-# Quick Start
+# Getting Started
 
-Steps to execute the application:
+First, ensure you have to server installed on your system and executing..
 
-1. Execute the command: ``` git clone https://github.com/Alver23/WebHotels.git```
-2. Execute ``` cd WebHotels ``` ``` npm install ```
-3. Look for the file "constants", in ``` app/utils/constants.js``` and modify ``` export const API_URL = 'http://localhost:4567/'; ```, add by the server URL.
-4. Execute ``` npm start ```
+```
+# clone it
+git clone https://github.com/Alver23/WebHotels.git
+cd WebHotels
+
+# Install dependencies
+npm install
+
+#Look for the file "constants", in app/utils/constants.js and modify export const API_URL = 'http://localhost:4567/'
+#example
+export const API_URL = 'http://yourdomain:yourport/'
+
+
+# Run it
+npm start
+
+```
