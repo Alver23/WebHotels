@@ -1,8 +1,8 @@
 // Dependencies
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactStars from 'react-stars';
 import { Link } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import {
   Card,
   CardImg,
@@ -15,17 +15,27 @@ import {
 } from 'reactstrap';
 
 // Components
-import Icon from 'components/Icon';
+import Start from 'components/Start';
+import ListIcon from 'components/ListIcon';
 
 // Constants
 import { API_URL } from 'utils/constants';
 
+// Traductions
+import messages from './messages';
+
 // Relative Path
 import Wrapper from './Wrapper';
 import WrapperItem from './WrapperItem';
-import WrapperIcon from './WrapperIcon';
 
 class HotelLists extends React.Component {
+
+  static propTypes = {
+    data: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.array,
+    ]),
+  }
 
   renderImage = (item) => {
     const image = (item && item.length > 0) ? item[0] : false;
@@ -34,35 +44,8 @@ class HotelLists extends React.Component {
         <CardImg
           top
           width="100%"
-          src={`${API_URL}${image.path}`}
           alt={image.name}
-        />
-      );
-    }
-    return null;
-  }
-
-  renderIcons = (icons) => {
-    if (icons && icons.length > 0) {
-      const iconToRender = icons.map((name, index) => <Icon key={index.toString()} name={name} />);
-      return (
-        <WrapperIcon>
-          {iconToRender}
-        </WrapperIcon>
-      );
-    }
-    return null;
-  }
-
-  renderStart = (start) => {
-    if (start) {
-      return (
-        <ReactStars
-          count={5}
-          size={24}
-          edit={false}
-          value={start}
-          color2={'#ffd700'}
+          src={`${API_URL}${image.path}`}
         />
       );
     }
@@ -80,10 +63,10 @@ class HotelLists extends React.Component {
           {this.renderImage(item.images)}
           <CardBody>
             <CardTitle>{item.name}</CardTitle>
-            {this.renderStart(item.starts)}
-            <CardText>apartir de</CardText>
+            <Start value={item.starts} />
+            <CardText><FormattedMessage {...messages.textPrice} /></CardText>
             <CardSubtitle style={{ color: '#EA6422' }}>COP <strong>{parseFloat(price)}</strong></CardSubtitle>
-            {this.renderIcons(item.amenities)}
+            <ListIcon items={item.amenities} />
           </CardBody>
           <CardFooter>
             <Button
@@ -91,7 +74,7 @@ class HotelLists extends React.Component {
               color="primary"
               to={`detail/${item._id}`}
             >
-              Ver hotel
+              <FormattedMessage {...messages.buttonViewHotel} />
             </Button>
           </CardFooter>
         </Card>
@@ -114,12 +97,5 @@ class HotelLists extends React.Component {
     return null;
   }
 }
-
-HotelLists.propTypes = {
-  data: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.array,
-  ]),
-};
 
 export default HotelLists;

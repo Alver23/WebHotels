@@ -11,6 +11,7 @@ function Carousel(props) {
   const {
     items,
   } = props;
+
   return (
     <Wrapper>
       <UncontrolledCarousel items={parseItems(items)} />

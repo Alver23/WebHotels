@@ -10,6 +10,10 @@ import Wrapper from './Wrapper';
 
 class ListIcon extends React.Component {
 
+  static propTypes = {
+    items: PropTypes.array.isRequired,
+  }
+
   renderIcons = (icons) => icons.map((name, index) => (
     <Icon key={index.toString()} name={name} />
       ))
@@ -26,9 +30,4 @@ class ListIcon extends React.Component {
     );
   }
 }
-
-ListIcon.propTypes = {
-  items: PropTypes.array.isRequired,
-};
-
 export default ListIcon;

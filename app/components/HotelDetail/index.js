@@ -1,16 +1,24 @@
 // Dependencies
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
+
 import {
   Card,
+  Button,
   CardText,
   CardTitle,
+  CardFooter,
 } from 'reactstrap';
 
 // Components
 import Start from 'components/Start';
 import Carousel from 'components/Carousel';
 import ListIcon from 'components/ListIcon';
+
+// Traductions
+import messages from './messages';
 
 // Relative Path
 import Wrapper from './Wrapper';
@@ -22,6 +30,7 @@ function HotelDetail(props) {
   } = props;
 
   const carousel = (item.images && item.images.length > 0) ? (<Carousel items={item.images} />) : null;
+
   return (
     <Card body>
       <Wrapper>
@@ -33,9 +42,18 @@ function HotelDetail(props) {
         </WrapperItem>
       </Wrapper>
       <CardText>{item.address}</CardText>
-      <CardText><strong>Servicios del Hotel</strong></CardText>
+      <CardText><strong><FormattedMessage {...messages.hotelServices} /></strong></CardText>
       <ListIcon items={item.amenities} />
       {carousel}
+      <CardFooter>
+        <Button
+          to={'/'}
+          tag={Link}
+          color="primary"
+        >
+          <FormattedMessage {...messages.buttonBack} />
+        </Button>
+      </CardFooter>
     </Card>
   );
 }
