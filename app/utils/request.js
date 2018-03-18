@@ -1,4 +1,6 @@
+// Dependencies
 import 'whatwg-fetch';
+import { API_URL } from './constants';
 
 /**
  * Parses the JSON returned by a network request
@@ -39,8 +41,32 @@ function checkStatus(response) {
  *
  * @return {object}           The response data
  */
-export default function request(url, options) {
-  return fetch(url, options)
+export default function request(url, receivedOptions) {
+  const options = receivedOptions;
+
+  let baseURL = API_URL;
+
+  // In case of external URL
+  if (options && options.externalUrl) {
+    baseURL = '';
+  } else {
+    // Default headers
+    let headers = {
+      Accept: 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      // 'Content-Type': 'application/json' // Issue with image
+    };
+
+    // Add Headers for request
+    if (typeof options.headers !== 'undefined' && options.headers !== undefined) {
+      headers = { ...headers, ...options.headers };
+    }
+
+    options.headers = new Headers(headers);
+  }
+
+  return fetch(baseURL.concat(url), options)
     .then(checkStatus)
     .then(parseJSON);
 }
+

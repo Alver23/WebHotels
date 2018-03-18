@@ -9,7 +9,12 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const LOAD_REPOS = 'boilerplate/App/LOAD_REPOS';
-export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
-export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
+export const LOAD_REPOS = 'WebHotels/App/LOAD_REPOS';
+export const LOAD_REPOS_SUCCESS = 'WebHotels/App/LOAD_REPOS_SUCCESS';
+export const LOAD_REPOS_ERROR = 'WebHotels/App/LOAD_REPOS_ERROR';
 export const DEFAULT_LOCALE = 'en';
+
+// Get Hotels
+export const GET_HOTELS = 'WebHotels/App/GET_HOTELS';
+export const GET_HOTELS_SUCCESS = 'WebHotels/App/GET_HOTELS_SUCCESS';
+export const GET_HOTELS_ERROR = 'WebHotels/App/GET_HOTELS_ERROR';

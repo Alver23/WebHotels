@@ -1,18 +1,18 @@
 // Constants
 import {
-  GET_HOTELS,
-  GET_HOTELS_ERROR,
-  GET_HOTELS_SUCCESS,
+  GET_HOTEL,
+  GET_HOTEL_ERROR,
+  GET_HOTEL_SUCCESS,
 } from './constants';
 
 /**
  * Get hotels from server
  * @returns {{type}} Object
  */
-export function getHotels(params = null) {
+export function getHotelById(id) {
   return {
-    params,
-    type: GET_HOTELS,
+    id,
+    type: GET_HOTEL,
   };
 }
 
@@ -21,10 +21,10 @@ export function getHotels(params = null) {
  * @param response
  * @returns {{response: *, type}}
  */
-export function getHotelsSuccess(response) {
+export function getHotelSuccess(response) {
   return {
     response,
-    type: GET_HOTELS_SUCCESS,
+    type: GET_HOTEL_SUCCESS,
   };
 }
 
@@ -33,9 +33,10 @@ export function getHotelsSuccess(response) {
  * @param response
  * @returns {{response: *, type}}
  */
-export function getHotelsError(response) {
+export function getHotelError(response) {
   return {
     response,
-    type: GET_HOTELS_ERROR,
+    type: GET_HOTEL_ERROR,
   };
 }
+

@@ -1,27 +1,20 @@
-/**
- *
- * Img.js
- *
- * Renders an image, enforcing the usage of the alt="" tag
- */
-
+// Dependencies
 import React from 'react';
 import PropTypes from 'prop-types';
+import Image from 'react-image';
+import VisibilitySensor from 'react-visibility-sensor';
 
 function Img(props) {
   return (
-    <img className={props.className} src={props.src} alt={props.alt} />
+    <VisibilitySensor>
+      <Image {...props} />
+    </VisibilitySensor>
   );
 }
 
 // We require the use of src and alt, only enforced by react in dev mode
 Img.propTypes = {
-  src: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]).isRequired,
-  alt: PropTypes.string.isRequired,
-  className: PropTypes.string,
+  loader: PropTypes.element,
 };
 
 export default Img;
