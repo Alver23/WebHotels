@@ -5,6 +5,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
+import { persistStore } from 'redux-persist-immutable';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 
@@ -55,6 +56,8 @@ export default function configureStore(initialState = {}, history) {
       store.replaceReducer(createReducer(store.injectedReducers));
     });
   }
+
+  persistStore(store);
 
   return store;
 }
