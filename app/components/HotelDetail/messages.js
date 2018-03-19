@@ -7,6 +7,6 @@ export default defineMessages({
   },
   buttonBack: {
     id: 'WebHotels.components.HotelDetail.buttonBack',
-    defaultMessage: 'Ver más hoteles',
+    defaultMessage: 'Atras',
   },
 });

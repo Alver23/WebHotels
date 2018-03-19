@@ -56,7 +56,7 @@ class LandingPage extends React.Component {
       loading,
     } = this.props;
 
-    if (loading) {
+    if (loading || !hotels) {
       return (<LoadingIndicator />);
     }
 
