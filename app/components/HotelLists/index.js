@@ -56,6 +56,7 @@ class HotelLists extends React.Component {
   /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
   renderLists = (data) => data.map((item, index) => {
     const price = item.price.$numberDecimal;
+    const amenities = (item.amenities && item.amenities.length > 0) ? (<ListIcon items={item.amenities} />) : null;
     // const amenities
     return (
       <WrapperItem key={index.toString()}>
@@ -66,7 +67,7 @@ class HotelLists extends React.Component {
             <Start value={item.starts} />
             <CardText><FormattedMessage {...messages.textPrice} /></CardText>
             <CardSubtitle style={{ color: '#EA6422' }}>COP <strong>{parseFloat(price)}</strong></CardSubtitle>
-            <ListIcon items={item.amenities} />
+            {amenities}
           </CardBody>
           <CardFooter>
             <Button
@@ -86,6 +87,8 @@ class HotelLists extends React.Component {
     const {
       data,
     } = this.props;
+
+    console.log(data);
 
     if (data && data.length > 0) {
       return (
